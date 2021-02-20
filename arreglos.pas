@@ -16,7 +16,7 @@ begin
         readln(personas[registrados, 1]);
         writeln('Ingrese el apellido de la persona ', registrados);
         readln(personas[registrados, 2]);
-        writeln('Ingrese el correo de la persona ', registrados);
+        writeln('Ingrese la cedula de la persona ', registrados);
         readln(personas[registrados, 3]);
         writeln('Desea salir? S/N');
         readln(opc);
@@ -34,10 +34,52 @@ begin
         writeln('Persona ', i);
         writeln('Nombre: ',personas[i, 1]);
         writeln('Apellido: ',personas[i, 2]);
-        writeln('Correo: ',personas[i, 3]);
+        writeln('Cedula: ',personas[i, 3]);
         writeln();
     end;
 end;
+
+procedure mostrarDatos(indice:integer)
+begin
+        writeln('Persona ', i);
+        writeln('Nombre: ',personas[indice, 1]);
+        writeln('Apellido: ',personas[indice, 2]);
+        writeln('Cedula: ',personas[indice, 3]);
+        writeln();
+end;
+
+function buscarPersona(): integer
+var
+resp: string;
+encontrado:boolean;
+begin
+    encontrado:=false;
+    writeln('ingrese la cedula de la persona a buscar');
+    readln(resp);
+    for i:=1 to 5 do
+    begin
+        if resp = personas[i,3] then
+        begin
+            return i;
+        end;
+    end;
+    if not encontrado then
+    begin
+        writeln('la cedula ', resp, 'no existe en el arreglo');
+        return 0;
+    end;
+end;
+
+procedure mostrarPersona(i:integer)
+begin
+   begin
+       writeln('Nombre: ',personas[i, 1]);
+       writeln('Apellido: ',personas[i, 2]);
+       writeln('Cedula: ',personas[i, 3]);
+       writeln();
+   end;
+end;
+
 begin
     registrados:= 0;
     registrar();
